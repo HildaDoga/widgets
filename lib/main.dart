@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return value != null && int.tryParse(value) != null;
   }
 
-  void _navigateToNewPage() {
+  void _navigateToNewPage() async {
     if (people.length >= 3) {
       Navigator.push(
         context,
@@ -106,14 +106,25 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: _navigateToNewPage,
             child: Text('Navigate to New Page'),
           ),
+          Opacity(
+            opacity: 0.2,
+            child: Text(
+                'You must enter at least 3 names and ages to proceed to the next page.'),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: people.length,
               itemBuilder: (context, index) {
                 final person = people[index];
-                return ListTile(
-                  title: Text(person.name),
-                  subtitle: Text('${person.age} years old.'),
+                return DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 95, 227, 144),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListTile(
+                    title: Text(person.name),
+                    subtitle: Text('${person.age} years old.'),
+                  ),
                 );
               },
             ),
@@ -135,7 +146,7 @@ class NewPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('New Page'),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: const Color.fromARGB(255, 162, 123, 228),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10),
@@ -155,47 +166,58 @@ class NewPage extends StatelessWidget {
                 child: Image(image: AssetImage('lib/images/image1.jpg')),
               ),
               ListTile(
-                title: Text("Features"),
+                title: Text(
+                    "Here are 20 qualities you need to be a good computer engineer:"),
               ),
               ListTile(
-                title: Text("Feature 1"),
-                subtitle: Text("Description for Feature 1"),
+                title: Text("Strong problem-solving skills:"),
+                subtitle: Text(
+                    "Computer engineers are constantly faced with complex problems to solve. To be successful, you need to be able to think critically and creatively to come up with solutions."),
               ),
               ListTile(
-                title: Text("Feature 2"),
-                subtitle: Text("Description for Feature 2"),
+                title: Text("Excellent analytical and research skills:"),
+                subtitle: Text(
+                    "Computer engineers need to be able to analyze data and research new technologies to stay up-to-date on the latest trends."),
               ),
               ListTile(
-                title: Text("Feature 3"),
-                subtitle: Text("Description for Feature 3"),
+                title: Text("Strong teamwork skills:"),
+                subtitle: Text(
+                    "Computer engineering is often a collaborative effort, so you need to be able to work effectively with others."),
               ),
               ListTile(
-                title: Text("Feature 4"),
-                subtitle: Text("Description for Feature 4"),
+                title: Text("Attention to detail:"),
+                subtitle: Text(
+                    "Computer engineers need to be able to pay attention to detail to ensure that their work is accurate and error-free."),
               ),
               ListTile(
-                title: Text("Feature 5"),
-                subtitle: Text("Description for Feature 5"),
+                title: Text("Ability to learn new things quickly:"),
+                subtitle: Text(
+                    "The field of computer science is constantly evolving, so you need to be able to learn new things quickly to stay ahead of the curve."),
               ),
               ListTile(
-                title: Text("Feature 6"),
-                subtitle: Text("Description for Feature 6"),
+                title: Text("Ability to think creatively:"),
+                subtitle: Text(
+                    "Computer engineers need to be able to think creatively to come up with new solutions."),
               ),
               ListTile(
-                title: Text("Feature 7"),
-                subtitle: Text("Description for Feature 7"),
+                title: Text("Ability to meet deadlines:"),
+                subtitle: Text(
+                    "Computer engineers often have to meet deadlines, so you need to be able to prioritize your work and meet deadlines consistently."),
               ),
               ListTile(
-                title: Text("Feature 8"),
-                subtitle: Text("Description for Feature 8"),
+                title: Text("Ability to work well under pressure:"),
+                subtitle: Text(
+                    "Computer engineers often work under tight deadlines, so you need to be able to handle stress and work efficiently under pressure."),
               ),
               ListTile(
-                title: Text("Feature 9"),
-                subtitle: Text("Description for Feature 9"),
+                title: Text("Ability to follow instructions:"),
+                subtitle: Text(
+                    "Computer engineers often need to follow instructions, so you need to be able to follow directions and complete tasks as instructed."),
               ),
               ListTile(
-                title: Text("Feature 10"),
-                subtitle: Text("Description for Feature 10"),
+                title: Text("Ability to be a lifelong learner:"),
+                subtitle: Text(
+                    "The field of computer science is constantly evolving, so you need to be willing to learn new things throughout your career."),
               ),
             ],
           ),
